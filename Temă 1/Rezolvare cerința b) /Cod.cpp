@@ -102,8 +102,7 @@ void Rezolvare() {
 
 }
 
-int main()
-{
+int main() {
    Citire();
    Rezolvare();
     return 0;
