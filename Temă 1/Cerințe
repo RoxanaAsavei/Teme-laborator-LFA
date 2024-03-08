@@ -1,0 +1,59 @@
+Tema 1 LFA
+
+Implementati un automat finit determinist (DFA).
+
+Programul citeste din fisierul “input.txt” urmoatoarele informatii:
+
+-pe prima linie, numarul de stari ale automatului (numit N)
+-pe a doua linie, starile automatului (numere intregi, nu neaparat consecutive)
+-pe linia a treia, numarul de tranzitii (sa il notam M)
+-pe urmatoarele M linii, descrierea unei tranzitii, sub formatul:
+	- x y l, unde x este starea (nodul) din care pleaca tranzitia (muchia, arcul) y este starea in care ajunge tranzitia, l este litera tranzitiei
+-pe urmatoarea linie este scris un numar natural S, care inseamna starea initiala
+-pe urmatoarea linie gasim nrF, care inseamna numarul de stari finale
+-pe urmatoarea linie gasim nrF numere intregi (nrF<=N), reprezentand starile finale
+-pe urmatoarea linie gasim NrCuv, care inseamna numarul de cuvinte ce urmeaza a fi verificate
+-pe urmatoarele NrCuv linii se gaseste cate un cuvant
+
+	Programul vostru trebuie sa afiseze, in fisierul “output.txt”, pe nrCuv linii separate, unul din cuvinetele DA sau NU, semnificand daca cuvantul respectiv este sau nu acceptat de automat.
+
+Observatie: alfabetul limbajului descris de automat va fi format doar din litere mici ale alfabetului englez, iar automatul este complet
+
+
+Implementati un automat finit nedeterminist (NFA).
+
+
+Programul citeste din fisier urmoatoarele informatii:
+
+-pe prima linie, numarul de stari ale automatului (numit N)
+-pe a doua linie, starile automatului (numere intregi, nu neaparat consecutive)
+-pe linia a treia, numarul de tranzitii (sa il notam M)
+-pe urmatoarele M linii, descrierea unei tranzitii, sub formatul:
+	- x y l, unde x este starea (nodul) din care pleaca tranzitia (muchia, arcul) y este starea in care ajunge tranzitia, l este litera tranzitiei
+-pe urmatoarea linie este scris un numar natural S, care inseamna starea initiala
+-pe urmatoarea linie gasim nrF, care inseamna numarul de stari finale
+-pe urmatoarea linie gasim nrF numere intregi (nrF<=N), reprezentand starile finale
+-pe urmatoarea linie gasim NrCuv, care inseamna numarul de cuvinte ce urmeaza a fi verificate
+-pe urmatoarele NrCuv linii se gaseste cate un cuvant
+
+
+Programul vostru trebuie sa afiseze, in fisierul “output.txt”, pe nrCuv linii separate, unul din cuvinetele DA sau NU, semnificand daca cuvantul respectiv este sau nu acceptat de automat.
+
+Obsersvatie1: alfabetul limbajului descris de automat va fi format doar din litere mici ale alfabetului englez 
+Obsersvatie2: automatul citit nu este neapărat complet
+
+Implementati un Lambda-NFA. L-ambda NFA-ul trebuie sa fie citit din fisier iar programul trebuie sa verifice, pentru mai multe cuvinte citite din fisier, daca ele sunt acceptate sau nu de automat. Aveți grijă la cazul în care există cicluri cu lambda.
+
+
+
+Bonus: afișați și succesiunea de stări (drumul) de la starea inițială până la starea care acceptă cuvântul (doar pentru NFA, nu și pentru L-NFA). 
+
+
+Barem: 3 puncte fiecare problema, cu punct din oficiu însumează 10. Pentru soluții excepționale, sau pentru activitate la laborator se poate ajunge la nota 11 sau 12. 
+
+	Trimiteți soluțiile voastre (scrise într-un limbaj de programare la alegerea voastră) la adresa de email: smit.oanea@s.unibuc.ro 
+Menționați în email și numărul grupei din care faceți parte.
+
+Spor!
+
+
