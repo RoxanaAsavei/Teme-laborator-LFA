@@ -1,0 +1,32 @@
+5
+-5 7 29 12 32
+19
+-5 7 a
+-5 7 b
+7 12 c
+7 29 #
+7 29 a
+7 32 #
+12 -5 d 
+32 12 #
+32 12 a
+32 12 b
+32 12 c
+32 29 #
+32 29 b
+29 32 #
+29 32 d
+29 7 #
+12 12 a
+29 29 b
+12 32 #
+-5
+2
+7 32
+6
+bdda
+adbadb
+badaaaaaaaaaaa
+acbbbbbd
+bcaaaaabd
+abbabaabdc
