@@ -1,0 +1,25 @@
+6
+-8 16 23 48 73 101
+13
+-8 16 a
+-8 48 b
+-8 23 c
+16 16 b
+16 23 c
+16 101 a
+48 -8 a
+48 73 b
+73 48 a
+73 101 b
+73 73 c
+23 73 a
+101 101 c
+-8 
+2
+73 101
+5
+abbbbbbbbaccccccccccc
+bacaccccabcccccccccc
+acaba
+babababababaca
+cabcccccccccccccccccc
