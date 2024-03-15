@@ -6,7 +6,7 @@ ifstream fin("input.txt");
 ofstream fout("output.txt");
 
 int N; // nr de stari
-map<int, int> stari; // val_nodului - al catalea a fost citit (ii asociez fiecarui  nod un indice)
+map<int, int> stari; // val_nodului - al catalea a fost citit (ii asociez fiecarui nod un indice)
 int M; // nr de tranzitii
 vector<pair<int, char> > graf[VALMAX + 5]; // modelarea grafului
 // pt fiecare nod o sa tin minte un vector cu elemente de forma (vecin, litera cu care ajung in vecin)
@@ -14,7 +14,7 @@ vector<pair<int, char> > graf[VALMAX + 5]; // modelarea grafului
 int init_state; // starea initiala
 
 int ct_finale; // nr de stari finale
-vector<int> stari_finale;
+map<int, bool> finale; // marcam cu 1 starile care sunt finale 
 
 int nr_cuvinte;
 vector<string> cuvinte;
@@ -25,7 +25,7 @@ void Citire() {
     fin >> N;
     for(int i = 1; i <= N; ++i) {
             fin  >> x;
-            stari[x] = i;  // nodului x ii asociez indicele i
+            stari[x] = i;  // nodului cu valoarea x ii asociez indicele i
         }
     fin >> M;
     for(int i = 1; i <= M; ++i) {
@@ -38,7 +38,7 @@ void Citire() {
     fin >> ct_finale;
     for(int i = 1; i <= ct_finale; ++i) {
         fin >> x;
-        stari_finale.push_back(stari[x]);
+        finale[stari[x]] = 1;
     }
 
     fin >> nr_cuvinte;
@@ -55,7 +55,7 @@ int DFS(string cuvant, int stare_curenta, int poz_curenta, int lungime) {
         for(int i = 0; i < graf[stare_curenta].size(); ++i) {
             if(graf[stare_curenta][i].second == cuvant[poz_curenta]) {
                 if(poz_curenta == lungime - 1) { // am putut obtine tot cuvantul, pana la ultima litera
-                    return graf[stare_curenta][i].first;
+                    return graf[stare_curenta][i].first; // returnez starea in care m-am oprit
                 }
                 else { // pot continua cu urmatoarea litera
                     return DFS(cuvant,  graf[stare_curenta][i].first, poz_curenta + 1, lungime);
@@ -75,10 +75,8 @@ bool Acceptat(string cuvant) {
         return 0;
     }
 
-    for(int i = 0; i < stari_finale.size(); ++i) {
-        if(starea_de_oprire == stari_finale[i]) {
-            return 1;
-        }
+    if(finale[starea_de_oprire]) {
+        return 1;
     }
 
     return 0;
