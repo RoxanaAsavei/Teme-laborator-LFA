@@ -36,7 +36,7 @@ void Citire() {
         }
     fin >> M;
     for(int i = 1; i <= M; ++i) {
-        fin >> x >> litera >> y;
+        fin >> x >> y >> litera;
         graf[stari[x]].push_back({stari[y], litera});
 
     }
@@ -61,7 +61,7 @@ void DFS(int nod_start, int nod_curent) {
     vizitat[nod_curent] = 1;
     lambda_inchidere[nod_start].push_back(nod_curent);
     for(int i = 0; i < graf[nod_curent].size(); ++i)
-        if(graf[nod_curent][i].second == '.' && !vizitat[graf[nod_curent][i].first])
+        if(graf[nod_curent][i].second == '#' && !vizitat[graf[nod_curent][i].first])
             DFS(nod_start, graf[nod_curent][i].first);
 }
 
