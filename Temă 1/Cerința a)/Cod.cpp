@@ -14,7 +14,7 @@ vector<pair<int, char> > graf[VALMAX + 5]; // modelarea grafului
 int init_state; // starea initiala
 
 int ct_finale; // nr de stari finale
-map<int, bool> finale; // marcam cu 1 starile care sunt finale 
+bitset<VALMAX + 5> finale; // marcam cu 1 starile care sunt finale 
 
 int nr_cuvinte;
 vector<string> cuvinte;
