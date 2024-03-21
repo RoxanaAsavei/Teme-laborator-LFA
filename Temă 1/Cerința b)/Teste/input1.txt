@@ -1,0 +1,16 @@
+5
+7 12 13 29 -8
+6
+7 12 a
+7 13 a
+12 29 b
+29 -8 a
+-8 -8 a
+-8 29 b
+7
+2
+13 -8
+3
+ababaaaaaaaaaaa
+a
+abaaaaaaa
