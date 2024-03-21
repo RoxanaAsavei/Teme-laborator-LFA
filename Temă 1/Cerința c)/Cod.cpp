@@ -14,14 +14,12 @@ vector<pair<int, char> > graf[VALMAX + 5]; // modelarea grafului
 int init_state; // starea initiala
 
 int ct_finale; // nr de stari finale
-vector<int> stari_finale;
 
 int nr_cuvinte;
 vector<string> cuvinte;
 
 vector<int> lambda_inchidere[VALMAX + 5];
 bitset<VALMAX + 5> vizitat; // pt a sti ce stari am pus deja intr-o inchidere
-bitset<VALMAX + 5> reset; // pt a reseta vizitat la 0
 
 queue<int> C; // in coada punem starile curente, cele de la care trebuie sa avansam
 
@@ -38,7 +36,7 @@ void Citire() {
         }
     fin >> M;
     for(int i = 1; i <= M; ++i) {
-        fin >> x >> y >> litera;
+        fin >> x >> litera >> y;
         graf[stari[x]].push_back({stari[y], litera});
 
     }
@@ -47,7 +45,6 @@ void Citire() {
     fin >> ct_finale;
     for(int i = 1; i <= ct_finale; ++i) {
         fin >> x;
-        stari_finale.push_back(stari[x]);
         finale[stari[x]] = 1;
     }
 
@@ -64,14 +61,14 @@ void DFS(int nod_start, int nod_curent) {
     vizitat[nod_curent] = 1;
     lambda_inchidere[nod_start].push_back(nod_curent);
     for(int i = 0; i < graf[nod_curent].size(); ++i)
-        if(graf[nod_curent][i].second == '#' && !vizitat[graf[nod_curent][i].first])
+        if(graf[nod_curent][i].second == '.' && !vizitat[graf[nod_curent][i].first])
             DFS(nod_start, graf[nod_curent][i].first);
 }
 
 
 
 void Lambda_inchidere(int nod) {
-    vizitat &= reset; // momentan nu e niciun nod vizitat
+    vizitat.reset(); // momentan nu e niciun nod vizitat
     DFS(nod, nod); // incep sa parcurg din nodul respectiv, mergand doar pe muchii cu lambda
 }
 
@@ -121,8 +118,13 @@ bool Acceptat(string cuvant) {
                 }
             }
         }
-        // rasturnam continutul setului coada
-        for( auto stare : urm_stari) {
+
+        if(urm_stari.empty()) {  // lipsa de tranzitivitate
+            return 0; 
+        }
+
+        // rasturnam continutul setului in coada
+        for(auto stare : urm_stari) {
             C.push(stare);
         }
 
@@ -140,8 +142,15 @@ bool Acceptat(string cuvant) {
     return 0;
 }
 
+void Initializare_coada() {
+    while(!C.empty()) {
+        C.pop();
+    }
+}
+
 void Rezolvare() {
     for(int i = 0; i < nr_cuvinte; ++i) {
+        Initializare_coada();
         bool acceptat = Acceptat(cuvinte[i]);
         if(acceptat) {
             fout << "DA" << endl;
@@ -155,7 +164,7 @@ void Rezolvare() {
 int main() {
     Citire();
     Construire_lamda_inchideri();
-    // Afisare_lambda_inchideri(); // calculeaza bine inchiderile
+    Afisare_lambda_inchideri(); // calculeaza bine inchiderile
     Rezolvare();
     return 0;
 }
